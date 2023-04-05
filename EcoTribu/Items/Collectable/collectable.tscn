@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://ins8tgtfjghs"]
+
+[ext_resource type="Script" path="res://Items/Collectable/collectable.gd" id="1_y0uie"]
+[ext_resource type="Texture2D" uid="uid://rhqsn27p6xoj" path="res://Items/Collectable/AirCleaner.png" id="2_e1ugs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7g4y"]
+size = Vector3(3.36522, 1.89612, 1.8305)
+
+[sub_resource type="Animation" id="Animation_njqcd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_avh1y"]
+resource_name = "wave"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.279607, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yl88l"]
+_data = {
+"RESET": SubResource("Animation_njqcd"),
+"wave": SubResource("Animation_avh1y")
+}
+
+[node name="Collectable" type="Area3D" groups=["Collectables"]]
+script = ExtResource("1_y0uie")
+type = "WIND"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_e7g4y")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_e1ugs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "wave"
+libraries = {
+"": SubResource("AnimationLibrary_yl88l")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

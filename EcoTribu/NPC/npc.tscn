@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2mgdoa2ghh0l"]
+
+[ext_resource type="Script" path="res://NPC/npc.gd" id="1_o08c0"]
+[ext_resource type="Texture2D" uid="uid://dheea3xeh0jja" path="res://NPC/assets/3.png" id="3_5y0sc"]
+[ext_resource type="Texture2D" uid="uid://pe7pfxhdm31l" path="res://NPC/talkBubble.png" id="3_7yoma"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hdg3m"]
+radius = 3.08016
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xsgfs"]
+size = Vector3(1.69719, 2.62742, 0.630603)
+
+[node name="NPC" type="StaticBody3D"]
+script = ExtResource("1_o08c0")
+
+[node name="Area3DHablar" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.956003, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DHablar"]
+shape = SubResource("CylinderShape3D_hdg3m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26311, 0)
+shape = SubResource("BoxShape3D_xsgfs")
+
+[node name="TalkSprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23095, -0.0874882)
+visible = false
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_7yoma")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.922458, 0)
+billboard = 2
+texture = ExtResource("3_5y0sc")
+
+[connection signal="body_entered" from="Area3DHablar" to="." method="_on_area_3d_hablar_body_entered"]
+[connection signal="body_exited" from="Area3DHablar" to="." method="_on_area_3d_hablar_body_exited"]

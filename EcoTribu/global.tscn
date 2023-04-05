@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://c14yx5qxaqwa8"]
+
+[ext_resource type="Script" path="res://global.gd" id="1_h31jd"]
+[ext_resource type="Script" path="res://PlayerGUI.gd" id="2_t2kg0"]
+[ext_resource type="Texture2D" uid="uid://beghfndn4pb3j" path="res://World/Assets/waterIcon.png" id="3_lhn0j"]
+[ext_resource type="Texture2D" uid="uid://dxq61qwuhp7g1" path="res://World/Assets/solarEnergyIcon.png" id="4_1s4tk"]
+[ext_resource type="Texture2D" uid="uid://6e6vn5kubrro" path="res://World/Assets/airIcon.png" id="5_ctewi"]
+[ext_resource type="AudioStream" uid="uid://cyj4n5twwvkj1" path="res://World/Assets/MENU_Pick.wav" id="6_beas5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c6sa2"]
+font_size = 20
+
+[sub_resource type="Animation" id="Animation_8c5i6"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq33u"]
+_data = {
+"new_animation": SubResource("Animation_8c5i6")
+}
+
+[node name="Global" type="Node"]
+script = ExtResource("1_h31jd")
+
+[node name="PlayerGUI" type="CanvasLayer" parent="."]
+script = ExtResource("2_t2kg0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerGUI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -57.0
+offset_right = 157.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(158, 20)
+
+[node name="AguaHBoxContainer" type="HBoxContainer" parent="PlayerGUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="PlayerGUI/HBoxContainer/AguaHBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_lhn0j")
+expand_mode = 2
+
+[node name="ItemsHaveLabel" type="Label" parent="PlayerGUI/HBoxContainer/AguaHBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="Label2" type="Label" parent="PlayerGUI/HBoxContainer/AguaHBoxContainer"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="ItemsTotalLabel" type="Label" parent="PlayerGUI/HBoxContainer/AguaHBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="SolarHBoxContainer2" type="HBoxContainer" parent="PlayerGUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="PlayerGUI/HBoxContainer/SolarHBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_1s4tk")
+expand_mode = 2
+
+[node name="ItemsHaveLabel" type="Label" parent="PlayerGUI/HBoxContainer/SolarHBoxContainer2"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="Label2" type="Label" parent="PlayerGUI/HBoxContainer/SolarHBoxContainer2"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="ItemsTotalLabel" type="Label" parent="PlayerGUI/HBoxContainer/SolarHBoxContainer2"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="AireHBoxContainer3" type="HBoxContainer" parent="PlayerGUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="PlayerGUI/HBoxContainer/AireHBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("5_ctewi")
+expand_mode = 2
+
+[node name="ItemsHaveLabel" type="Label" parent="PlayerGUI/HBoxContainer/AireHBoxContainer3"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="Label2" type="Label" parent="PlayerGUI/HBoxContainer/AireHBoxContainer3"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="ItemsTotalLabel" type="Label" parent="PlayerGUI/HBoxContainer/AireHBoxContainer3"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_c6sa2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerGUI"]
+libraries = {
+"": SubResource("AnimationLibrary_eq33u")
+}
+
+[node name="CollectedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_beas5")
+volume_db = 2.0

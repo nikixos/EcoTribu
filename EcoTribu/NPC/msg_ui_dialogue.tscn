@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://c53cg6nktutw0"]
+
+[ext_resource type="Script" path="res://NPC/DialogBox.gd" id="1_b5k2x"]
+[ext_resource type="AudioStream" uid="uid://bj87flxwu587h" path="res://NPC/dialogs/click.wav" id="2_kvtvw"]
+
+[node name="MsgUIDialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogBox" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -515.0
+offset_top = -233.0
+offset_right = 523.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.603922)
+script = ExtResource("1_b5k2x")
+textSpeed = 0.02
+
+[node name="Name" type="RichTextLabel" parent="DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.019
+offset_left = 8.0
+offset_top = -63.0
+offset_right = 208.278
+offset_bottom = -4.0
+theme_override_colors/default_color = Color(0.803922, 0, 0.172549, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Test"
+
+[node name="Text" type="RichTextLabel" parent="DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.019
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 1002.28
+offset_bottom = 193.0
+theme_override_font_sizes/normal_font_size = 31
+text = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+scroll_following = true
+
+[node name="Indicator" type="Polygon2D" parent="DialogBox"]
+position = Vector2(92.9099, 17.4545)
+scale = Vector2(0.90909, 0.909091)
+color = Color(0.615686, 0.309804, 0, 1)
+polygon = PackedVector2Array(978, 161.2, 1020.9, 161.2, 1001, 192)
+
+[node name="Portrait" type="Sprite2D" parent="DialogBox"]
+position = Vector2(-3, -116)
+
+[node name="Timer" type="Timer" parent="DialogBox"]
+one_shot = true
+
+[node name="AudioLetter" type="AudioStreamPlayer" parent="DialogBox"]
+stream = ExtResource("2_kvtvw")

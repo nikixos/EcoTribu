@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdop5mdyeh1fw"]
+
+[ext_resource type="Script" path="res://World/end_game.gd" id="1_h417s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bmens"]
+font_size = 24
+
+[node name="EndGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h417s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -585.0
+offset_top = -273.0
+offset_right = 577.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Felicitaciones guardián, tu esfuerzo y dedicación han ayudado a restaurar el equilibrio ecológico de nuestro planeta, y gracias a ti, las generaciones futuras podrán disfrutar de un mundo más sano y sostenible.
+Pero esta no es solo una victoria personal, sino una victoria colectiva que debemos celebrar juntos como una comunidad global comprometida con la protección del medio ambiente. Ahora que hemos visto lo que podemos lograr juntos, debemos seguir trabajando para preservar nuestro planeta, reducir nuestra huella de carbono, y crear un mundo más justo y equitativo para todos.
+
+Cada pequeño esfuerzo cuenta, desde reciclar y reducir nuestro consumo de energía, hasta apoyar iniciativas ambientales y presionar a nuestros líderes para tomar medidas concretas para combatir el cambio climático. No podemos darnos el lujo de ser indiferentes ante la crisis ambiental que enfrentamos.
+Sigamos trabajando juntos para construir un futuro más sostenible y justo para todos. Gracias por tu participación en el Gran Desafío Ecológico, y recuerda: el futuro está en nuestras manos. n_n
+(El juego se reiniciará automaticamente)"
+label_settings = SubResource("LabelSettings_bmens")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
