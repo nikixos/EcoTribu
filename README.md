@@ -1,2 +1,9 @@
 # EcoTribu
-Videojuego de codigo abierto para concurso de centro de cultura digital, Ecotribu, debe ser arrastrado el archivo project dentro del editor de Godot 4 para poder ser abierto el cual puede ser descargado en https://godotengine.org/
+Videojuego de codigo abierto para concurso de centro de cultura digital 
+
+https://godotengine.org/
+
+Descargar Godot 3 En la version del sistema operativo:
+Arrastrar el archivo .project dentro de Godot 3.
+
+https://godotengine.org/download/3.x/windows/
